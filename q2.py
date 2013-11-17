@@ -9,15 +9,23 @@ def recursiveHull(points):
 	leftHull = recursiveHull(pts[:len(points)/2])
 	rightHull = recursiveHull(pts[len(points)/2:])
 
-	x = leftHull[0]
-	for p in leftHull:
-		if x.x < p.x:
+	x = 0
+	for p in range(len(leftHull)):
+		if leftHull[x].x < leftHull[p].x:
 			x = p
 
-	y = rightHull[0]
-	for p in rightHull:
-		if y.x > p.x:
+	y = 0
+	for p in range(len(rightHull)):
+		if rightHull[y].x > rightHull[p].x:
 			y = p
+	
+	zRight = y - 1
+	zLeft = x - 1
+	while leftHull[x].orient(rightHull[zRight], rightHull[y]) < 1 and rightHull[y].orient(leftHull[zLeft], leftHull[x]) > 1:
+		while leftHull[x].orient(rightHull[zRight], rightHull[y]) < 1:
+			x = x - 1 if x - 1 >= 0 else len(leftHull) - 1
+		while rightHull[y].orient(leftHull[zLeft], leftHull[x]) > 1:
+			y = y - 1 if y - 1 >= 0 else len(rightHull) - 1
 
 	# While the line x-y is not tangent to both hulls (on the bottom) do  {
 	# 	While x-y is not tangent to the left hull, let x be the next clockwise point in the left hull.
