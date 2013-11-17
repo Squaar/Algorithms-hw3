@@ -8,6 +8,7 @@ class point:
 	def orient(self, p1, p2):
 		return ((p1.x  - self.x) * (p2.y - self.y)) - ((p1.y - self.y) * (p2.x - self.x))
 	
+	#bubble sort
 	def sort(self, points):
 		pts = points[:]
 		pts.remove(self)
@@ -18,6 +19,16 @@ class point:
 					pts[j+1] = pts[j]
 					pts[j] = tmp
 		return pts
+
+	#better sort
+	def sort2(self, points):
+		pts = points[:]
+		pts.remove(self)
+		pivot = point("pivot", self.x, self.y+1)
+		return sorted(pts, key=lambda point: self.orient(pivot, point))
+
+	# def __cmp__(self, x):
+	# 	return self.orient(point("", self.x, self.y+1), x)
 
 	def __repr__(self):
 		return self.name + "(" + str(self.x) + "," + str(self.y) + ")"

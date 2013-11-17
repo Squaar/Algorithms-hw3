@@ -32,12 +32,12 @@ def jarvis(points):
 	hull =[]
 	current = findBot(points)
 	hull.append(current)
-	current = current.sort(points)[-1]
+	current = current.sort2(points)[-1]
 	while True:
 		if current == hull[0]:
 			break
 		hull.append(current)
-		current = current.sort(points)[-1]
+		current = current.sort2(points)[-1]
 	return hull
 
 
