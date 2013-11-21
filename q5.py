@@ -49,19 +49,20 @@ def P2(numbers, n, k):
 
 votes = [3,3,3,3,3,3,3,3,4,4,4,4,4,5,5,5,5,5,6,6,6,7,7,7,7,8,8,9,9,9,10,10,10,10,11,11,11,11,12,13,15,15,15,17,20,21,21,27,31,34,55]
 
+print("Using the following values: \n" + str(votes) + "\nCan you make two subsets that sum to 0?")
+
 target = sum(votes)//2
 tup = P2(votes, len(votes), target)
 
 if tup[0] == False:
 	print("False")
 else:
-	vc = votes[:]
-	for i in tup[1]:
-		vc.remove(i)
-	print("Used in first half: " + str(vc))
-
 	tup2 = P2(tup[1], len(tup[1]), target)
 	#If there are no leftovers and it returns true then it is true else it is false
 	print(tup2[0] and len(tup2[1]) == 0)
 	if tup2[0] and len(tup2[1]) == 0:
-		print("Used in second half: " + str(tup[1]))
+		vc = votes[:]
+		for i in tup[1]:
+			vc.remove(i)
+		print("Used in first set: " + str(vc))
+		print("Used in second set: " + str(tup[1]))
