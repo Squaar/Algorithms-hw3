@@ -55,6 +55,13 @@ tup = P2(votes, len(votes), target)
 if tup[0] == False:
 	print("False")
 else:
+	vc = votes[:]
+	for i in tup[1]:
+		vc.remove(i)
+	print("Used in first half: " + str(vc))
+
 	tup2 = P2(tup[1], len(tup[1]), target)
 	#If there are no leftovers and it returns true then it is true else it is false
 	print(tup2[0] and len(tup2[1]) == 0)
+	if tup2[0] and len(tup2[1]) == 0:
+		print("Used in second half: " + str(tup[1]))
