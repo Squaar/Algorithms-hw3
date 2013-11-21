@@ -1,3 +1,5 @@
+import math
+
 class point:
 	def __init__(self,name,x,y):
 		self.name = name
@@ -21,11 +23,13 @@ class point:
 		return pts
 
 	#better sort
-	def sort2(self, points):
-		pts = points[:]
-		pts.remove(self)
-		pivot = point("pivot", self.x, self.y+1)
-		return sorted(pts, key=lambda point: self.orient(pivot, point))
+	# def sort2(self, points):
+	# 	pts = points[:]
+	# 	pts.remove(self)
+	# 	return sorted(pts, key=lambda point: self.angle(point))
+
+	# def angle(self, point):
+	# 	return -math.atan2((self.y - point.y) , (self.x - point.x))
 
 	# def __cmp__(self, x):
 	# 	return self.orient(point("", self.x, self.y+1), x)
