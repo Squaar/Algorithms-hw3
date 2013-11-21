@@ -25,6 +25,7 @@ def grahmScan(points):
 			stack.append(sort[i])
 		else:
 			stack.pop()
+			i +=1
 		i -= 1
 
 	return stack
